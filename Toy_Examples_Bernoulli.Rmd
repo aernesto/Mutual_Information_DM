@@ -1,0 +1,37 @@
+---
+title: "Mutual Information and Decision Making"
+output: html_notebook
+---
+<!-- 
+     executing *Ctrl+Shift+Enter*. 
+     Add a new chunk *Ctrl+Alt+I*.
+     *Ctrl+Shift+K* to preview the HTML file).
+    -->
+```{r}
+library(muti)
+```
+Create a vector representing $N$ i.i.d realizations of the true environment $S$, at a single point in time.
+For stationary telegraph process, $S\sim$Bernoulli$(1/2)$ at all times.
+```{r}
+N <- 60
+pS <- 1/2
+S <- rbinom(N,1,pS)
+```
+Create 3 observation variables and compute their mutual information with the environment.
+The first variable has Gaussian noise.
+```{r}
+sigma=.1
+x_Gauss <- rnorm(S, mean=S, sd=sigma)
+```
+```{r}
+muti(S,x_Gauss)
+```
+
+The second variable is the sign of the LLR of the first variable.
+```{r}
+likelihood
+x_LLR <- LLR(x_Gauss, likelihood)
+```
+
+
+
